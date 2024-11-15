@@ -52,12 +52,17 @@ def tan(number):
     "-e",
     "--epsilon",
     default=0.1,
-    help="smallangle approximation.",
+    help="The accuracy for the smallangle approximation.",
     show_default=True,
 )
 def approx(epsilon):
+    """Calculates the largest angle for which the smallangle approximation holds within a certain accuracy.
+
+    Args:
+        epsilon (float): The accuracy.
+    """    
     x=0
-    while abs(x - np.sin(x)) <= epsilon:
+    while abs(x - np.sin(x)) <= abs(epsilon):
         x = x + 0.001
     
     print(f"For an accuracy of {epsilon}, the small angle approximation holds up to x = {round(x, 3)}")
